@@ -1,0 +1,162 @@
+/* ==========================================================
+   BINAH COMMAND CENTER
+   DESIGN SYSTEM
+   GLOBAL VARIABLES
+========================================================== */
+
+:root{
+
+    /* ======================================================
+       COLORS
+    ====================================================== */
+
+    --color-background:#03060B;
+
+    --color-surface:#08121F;
+
+    --color-surface-light:#0F1D2F;
+
+    --color-primary:#00D9FF;
+
+    --color-primary-hover:#43F0FF;
+
+    --color-secondary:#00FFC8;
+
+    --color-success:#00FF9C;
+
+    --color-warning:#FFD166;
+
+    --color-danger:#FF5A5F;
+
+    --color-white:#FFFFFF;
+
+    --color-text:#E8F4FF;
+
+    --color-text-secondary:#9CB6C9;
+
+    --color-border:rgba(0,217,255,.18);
+
+    --color-glass:rgba(10,18,30,.72);
+
+    --color-shadow:rgba(0,217,255,.12);
+
+    /* ======================================================
+       TYPOGRAPHY
+    ====================================================== */
+
+    --font-family:
+
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    --font-size-xs:.75rem;
+
+    --font-size-sm:.875rem;
+
+    --font-size-md:1rem;
+
+    --font-size-lg:1.25rem;
+
+    --font-size-xl:2rem;
+
+    --font-size-display:3rem;
+
+    --font-weight-light:300;
+
+    --font-weight-regular:400;
+
+    --font-weight-medium:500;
+
+    --font-weight-semibold:600;
+
+    --font-weight-bold:700;
+
+    --letter-spacing-small:.08em;
+
+    --letter-spacing-medium:.18em;
+
+    --letter-spacing-large:.30em;
+
+    /* ======================================================
+       SPACING
+    ====================================================== */
+
+    --space-xxs:4px;
+
+    --space-xs:8px;
+
+    --space-sm:12px;
+
+    --space-md:16px;
+
+    --space-lg:24px;
+
+    --space-xl:32px;
+
+    --space-2xl:48px;
+
+    --space-3xl:64px;
+
+    /* ======================================================
+       BORDERS
+    ====================================================== */
+
+    --border-radius-small:6px;
+
+    --border-radius-medium:10px;
+
+    --border-radius-large:18px;
+
+    --border-width:1px;
+
+    /* ======================================================
+       SHADOWS
+    ====================================================== */
+
+    --shadow-soft:
+
+        0 0 12px rgba(0,217,255,.08);
+
+    --shadow-medium:
+
+        0 0 24px rgba(0,217,255,.14);
+
+    --shadow-strong:
+
+        0 0 42px rgba(0,217,255,.22);
+
+    /* ======================================================
+       TRANSITIONS
+    ====================================================== */
+
+    --transition-fast:.2s ease;
+
+    --transition-normal:.35s ease;
+
+    --transition-slow:.6s ease;
+
+    /* ======================================================
+       GLASS
+    ====================================================== */
+
+    --glass-blur:18px;
+
+    /* ======================================================
+       LAYERS
+    ====================================================== */
+
+    --z-background:0;
+
+    --z-grid:5;
+
+    --z-effects:10;
+
+    --z-content:20;
+
+    --z-modal:100;
+
+    --z-loader:200;
+
+}

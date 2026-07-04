@@ -1,0 +1,275 @@
+/* =======================================================
+   BINAH COMMAND CENTER
+   LOGIN SCREEN
+======================================================= */
+
+#login-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top,#11243b 0%,#05070b 45%,#020304 100%);
+
+}
+
+/* ===================================================== */
+
+.login-card{
+
+    position:relative;
+
+    width:430px;
+
+    padding:45px;
+
+    border:1px solid rgba(0,255,255,.15);
+
+    border-radius:14px;
+
+    backdrop-filter:blur(20px);
+
+    background:rgba(8,15,28,.72);
+
+    box-shadow:
+        0 0 30px rgba(0,255,255,.08),
+        inset 0 0 20px rgba(255,255,255,.02);
+
+    z-index:20;
+
+}
+
+/* ===================================================== */
+
+.login-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:8px;
+
+}
+
+.login-header h1{
+
+    color:white;
+
+    font-size:36px;
+
+    letter-spacing:6px;
+
+    font-weight:700;
+
+}
+
+/* ===================================================== */
+
+.status-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#00ffd5;
+
+    box-shadow:0 0 15px #00ffd5;
+
+}
+
+/* ===================================================== */
+
+.system-name{
+
+    color:#74d9ff;
+
+    letter-spacing:4px;
+
+    margin-bottom:35px;
+
+    text-transform:uppercase;
+
+}
+
+/* ===================================================== */
+
+.divider{
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,255,255,.4),
+        transparent
+    );
+
+    margin-bottom:30px;
+
+}
+
+/* ===================================================== */
+
+label{
+
+    display:block;
+
+    color:#5fe5ff;
+
+    margin-bottom:8px;
+
+    margin-top:18px;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+}
+
+/* ===================================================== */
+
+input{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#0d1725;
+
+    border:1px solid rgba(0,255,255,.2);
+
+    color:white;
+
+    outline:none;
+
+    border-radius:6px;
+
+    transition:.25s;
+
+    font-size:14px;
+
+}
+
+input:focus{
+
+    border-color:#00ffd5;
+
+    box-shadow:0 0 20px rgba(0,255,255,.15);
+
+}
+
+/* ===================================================== */
+
+button{
+
+    width:100%;
+
+    margin-top:28px;
+
+    padding:15px;
+
+    background:linear-gradient(
+        90deg,
+        #00bfff,
+        #00ffd5
+    );
+
+    border:none;
+
+    border-radius:6px;
+
+    color:#041017;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 25px rgba(0,255,255,.35);
+
+}
+
+/* ===================================================== */
+
+.system-status{
+
+    margin-top:35px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding-top:20px;
+
+}
+
+.system-status div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:12px;
+
+    color:#89cfe8;
+
+}
+
+.system-status span{
+
+    color:#00ffd5;
+
+}
+
+
+/* ==========================================================
+   LOGIN MESSAGE
+========================================================== */
+
+#login-message{
+
+    margin-top:20px;
+
+    min-height:22px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+}
+
+#login-message.success{
+
+    color:#00ffd5;
+
+}
+
+#login-message.error{
+
+    color:#ff6868;
+
+}

@@ -1,0 +1,280 @@
+/* ==========================================================
+   BINAH COMMAND CENTER
+   EFFECTS SYSTEM
+========================================================== */
+
+/* ==========================================================
+   SCAN LINES
+========================================================== */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background-image:
+
+        repeating-linear-gradient(
+
+            to bottom,
+
+            transparent 0px,
+
+            transparent 3px,
+
+            rgba(255,255,255,.015) 4px
+
+        );
+
+    animation:scanMove 10s linear infinite;
+
+    opacity:.45;
+
+}
+
+/* ==========================================================
+   AMBIENT GLOW
+========================================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+
+            circle at center,
+
+            rgba(0,255,255,.08),
+
+            transparent 70%
+
+        );
+
+}
+
+/* ==========================================================
+   LOGIN CARD PULSE
+========================================================== */
+
+.login-card{
+
+    animation:cardPulse 6s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   STATUS DOT
+========================================================== */
+
+.status-dot{
+
+    animation:statusBlink 1.8s infinite;
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+button{
+
+    transition:
+
+        .25s ease,
+
+        box-shadow .35s;
+
+}
+
+button:hover{
+
+    box-shadow:
+
+        0 0 12px rgba(0,255,255,.45),
+
+        0 0 25px rgba(0,255,255,.25);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+input{
+
+    transition:
+
+        border-color .3s,
+
+        box-shadow .3s,
+
+        background .3s;
+
+}
+
+input:hover{
+
+    background:#101d30;
+
+}
+
+input:focus{
+
+    box-shadow:
+
+        0 0 10px rgba(0,255,255,.35);
+
+}
+
+/* ==========================================================
+   LOGIN CARD APPEAR
+========================================================== */
+
+#login-screen{
+
+    animation:
+
+        fadeIn .7s ease;
+
+}
+
+/* ==========================================================
+   TERMINAL TEXT
+========================================================== */
+
+.system-status span{
+
+    animation:statusPulse 2.5s infinite;
+
+}
+
+/* ==========================================================
+   KEYFRAMES
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes statusBlink{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes statusPulse{
+
+    0%{
+
+        opacity:.45;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.45;
+
+    }
+
+}
+
+@keyframes cardPulse{
+
+    0%{
+
+        box-shadow:
+
+            0 0 20px rgba(0,255,255,.05);
+
+    }
+
+    50%{
+
+        box-shadow:
+
+            0 0 35px rgba(0,255,255,.15);
+
+    }
+
+    100%{
+
+        box-shadow:
+
+            0 0 20px rgba(0,255,255,.05);
+
+    }
+
+}
+
+@keyframes scanMove{
+
+    from{
+
+        transform:translateY(-5px);
+
+    }
+
+    to{
+
+        transform:translateY(5px);
+
+    }
+
+}

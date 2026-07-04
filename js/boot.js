@@ -1,0 +1,1 @@
+let p=0,e=document.getElementById('progress'),s=document.getElementById('status'),m=['Loading Kernel','Checking Security','Loading AI','Ready'];setInterval(()=>{if(p<100){p+=25;e.style.width=p+'%';s.textContent=m[Math.min(3,p/25-1)]}},700)
