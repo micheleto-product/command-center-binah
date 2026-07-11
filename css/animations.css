@@ -1,0 +1,115 @@
+/* ==========================================================
+   TRANSITION SCREEN
+========================================================== */
+
+#transition-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#02060c;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:opacity .8s ease;
+
+    z-index:9999;
+
+}
+
+#transition-screen.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.transition-logo{
+
+    font-size:36px;
+
+    letter-spacing:6px;
+
+    color:#00D9FF;
+
+}
+
+.transition-text{
+
+    font-size:14px;
+
+    color:#9CB6C9;
+
+    letter-spacing:3px;
+
+    animation:pulseTransition 1.4s infinite;
+
+}
+
+@keyframes pulseTransition{
+
+    50%{
+
+        opacity:.3;
+
+    }
+
+}
+
+/* ==========================================================
+   LOADING BAR
+========================================================== */
+
+#loading-bar{
+
+    width:420px;
+
+    height:6px;
+
+    background:#132338;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-top:30px;
+
+}
+
+#loading-progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#00D9FF;
+
+    transition:width .4s linear;
+
+}
+
+/* ==========================================================
+   FADE OUT
+========================================================== */
+
+#transition-screen.fade-out{
+
+    opacity:0;
+
+    transition:opacity .8s ease;
+
+}

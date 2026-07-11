@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Binah Command Center</title>
+
+    <link
+        rel="stylesheet"
+        href="../../css/variables.css">
+
+    <link
+        rel="stylesheet"
+        href="dashboard.css">
+
+</head>
+
+<body>
+
+<div id="dashboard">
+
+    <!-- ======================================================
+         TOP BAR
+    ======================================================= -->
+
+    <header id="topbar">
+
+    <div class="hud-left">
+
+        <div class="logo">
+
+            BINAH COMMAND CENTER
+
+        </div>
+
+        <div id="system-version">
+
+            v0.1.0
+
+        </div>
+
+    </div>
+
+    <div class="hud-right">
+
+        <div class="hud-item">
+
+            USER
+
+            <span id="current-user">
+
+                UNKNOWN
+
+            </span>
+
+        </div>
+
+        <div class="hud-item">
+
+            STATUS
+
+            <span id="system-status">
+
+                ONLINE
+
+            </span>
+
+        </div>
+
+        <div class="hud-item">
+
+            TIME
+
+            <span id="system-clock">
+
+                --:--:--
+
+            </span>
+
+        </div>
+
+    </div>
+
+    </header>
+
+    <!-- ======================================================
+         MAIN
+    ======================================================= -->
+
+    <main id="main-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar">
+
+            <nav id="sidebar-menu">
+
+                <button
+                    class="menu-item active"
+                    data-module="dashboard">
+
+                    Dashboard
+
+                </button>
+
+                <button
+                    class="menu-item"
+                    data-module="security">
+
+                    Security
+
+                </button>
+
+                <button
+                    class="menu-item"
+                    data-module="intelligence">
+
+                    Intelligence
+
+                </button>
+
+                <button
+                    class="menu-item"
+                    data-module="users">
+
+                    Users
+
+                </button>
+
+                <button
+                    class="menu-item"
+                    data-module="logs">
+
+                    Logs
+
+                </button>
+
+                <button
+                    class="menu-item"
+                    data-module="settings">
+
+                    Settings
+
+                </button>
+
+            </nav>
+
+        </aside>
+
+        <!-- CONTENT -->
+
+        <section id="content">
+
+            <header id="workspace-header">
+
+                <h1 id="module-title">
+
+                    Dashboard
+
+                </h1>
+
+                <p id="module-description">
+
+                    Mission Control initialized successfully.
+
+                </p>
+
+            </header>
+
+            <section id="cards-grid">
+
+                    <article
+                        class="dashboard-card"
+                        id="card-system">
+
+                        <h3>System</h3>
+
+                        <p class="card-value">
+
+                            --
+
+                        </p>
+
+                    </article>
+
+                    <article
+                        class="dashboard-card"
+                        id="card-security">
+
+                        <h3>Security</h3>
+
+                        <p class="card-value">
+
+                            --
+
+                        </p>
+
+                    </article>
+
+                    <article
+                        class="dashboard-card"
+                        id="card-ai">
+
+                        <h3>AI Status</h3>
+
+                        <p class="card-value">
+
+                            --
+
+                        </p>
+
+                    </article>
+
+                    <article
+                        class="dashboard-card"
+                        id="card-logs">
+
+                        <h3>Logs</h3>
+
+                        <p class="card-value">
+
+                            --
+
+                        </p>
+
+                    </article>
+
+                </section>
+                
+            </section>
+    </main>
+
+    <!-- ======================================================
+         STATUS BAR
+    ======================================================= -->
+
+    <footer id="statusbar">
+
+        <span>
+
+            STATUS:
+            ONLINE
+
+        </span>
+
+    </footer>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>

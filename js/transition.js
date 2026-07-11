@@ -1,35 +1,204 @@
 /* ==========================================================
    BINAH COMMAND CENTER
-   TRANSITION ENGINE (BASE)
+   TRANSITION ENGINE
 ========================================================== */
-
-window.addEventListener("binah:auto-enter", (event) => {
-
-    const session = event.detail;
-
-    console.log("[BINAH] Transition starting for:", session.username);
-
-    // F04 vai assumir daqui
-
-    startTransition(session);
-
-});
 
 /* ==========================================================
-   PLACEHOLDER
+   EVENTS
 ========================================================== */
 
-function startTransition(session){
+window.addEventListener(
 
-    console.log("[BINAH] F04 not implemented yet.");
+    "binah:authenticated",
 
-    // por enquanto só simula entrada
+    startTransition
+
+);
+
+/* ==========================================================
+   START TRANSITION
+========================================================== */
+
+function startTransition(){
+
+    const login = document.getElementById(
+
+        "login-screen"
+
+    );
+
+    const transition = document.getElementById(
+
+        "transition-screen"
+
+    );
+
+    if(login){
+
+        login.style.display = "none";
+
+    }
+
+    if(transition){
+
+        transition.classList.remove(
+
+            "hidden"
+
+        );
+
+        transition.classList.add(
+
+            "active"
+
+        );
+
+    }
+
+    initializeMission();
+
+}
+
+/* ==========================================================
+   MISSION INITIALIZATION
+========================================================== */
+
+function initializeMission(){
+
+    const message = document.getElementById(
+
+        "transition-message"
+
+    );
+
+    const progress = document.getElementById(
+
+        "loading-progress"
+
+    );
+
+    const steps = [
+
+        {
+
+            text: "Loading Modules...",
+
+            progress: 20
+
+        },
+
+        {
+
+            text: "Checking Security...",
+
+            progress: 40
+
+        },
+
+        {
+
+            text: "Loading Interface...",
+
+            progress: 65
+
+        },
+
+        {
+
+            text: "Connecting Services...",
+
+            progress: 85
+
+        },
+
+        {
+
+            text: "Command Center Ready",
+
+            progress: 100
+
+        }
+
+    ];
+
+    let index = 0;
+
+    function nextStep(){
+
+        if(index >= steps.length){
+
+            console.log(
+
+                "Mission Initialization Finished"
+
+            );
+
+            finishTransition();
+
+            return;
+
+        }
+
+        if(message){
+
+            message.innerText =
+
+                steps[index].text;
+
+        }
+
+        if(progress){
+
+            progress.style.width =
+
+                steps[index].progress + "%";
+
+        }
+
+        index++;
+
+        setTimeout(
+
+            nextStep,
+
+            900
+
+        );
+
+    }
+
+    nextStep();
+
+}
+
+/* ==========================================================
+   FINISH TRANSITION
+========================================================== */
+
+function finishTransition(){
+
+    const transition = document.getElementById(
+
+        "transition-screen"
+
+    );
+
+    if(transition){
+
+        transition.classList.add(
+
+            "fade-out"
+
+        );
+
+    }
+
     setTimeout(() => {
 
-        document.body.classList.add("system-active");
+        window.location.href =
 
-        console.log("[BINAH] System ready");
+            "roots/dashboard/index.html";
 
-    }, 800);
+    },800);
 
 }
