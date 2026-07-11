@@ -39,13 +39,17 @@ const DashboardState = {
 
 function initializeDashboard(){
 
+    loadCurrentModule();
+
     loadUser();
 
     startClock();
 
-    initializeSidebar();
-
     initializeCards();
+
+    initializeModule();
+
+    applicationReady();
 
     console.table(
 
@@ -218,6 +222,8 @@ function initializeSidebar(){
 
 function changeModule(event){
 
+    const module = event.currentTarget.dataset.module;
+
     document.querySelectorAll(
 
         ".menu-item"
@@ -238,23 +244,9 @@ function changeModule(event){
 
     );
 
-    const module =
-
-        event.currentTarget.dataset.module;
-
-    NavigationState.currentModule =
-
-        module;
-
     updateContent(module);
 
-    console.table({
-
-        Module: module,
-
-        Route: getModuleRoute(module)
-
-    });
+    openModule(module);
 
 }
 
@@ -305,6 +297,62 @@ function getCurrentModule(){
 }
 
 /* ==========================================================
+   MODULE NAVIGATION
+========================================================== */
+
+function navigateToModule(route){
+
+    if(!route){
+
+        return;
+
+    }
+
+    setTimeout(()=>{
+
+        window.location.href = route;
+
+    },250);
+
+}
+
+/* ==========================================================
+   SAVE CURRENT MODULE
+========================================================== */
+
+function saveCurrentModule(){
+
+    sessionStorage.setItem(
+
+        "binah-current-module",
+
+        NavigationState.currentModule
+
+    );
+
+}
+
+/* ==========================================================
+   LOAD CURRENT MODULE
+========================================================== */
+
+function loadCurrentModule(){
+
+    const module = sessionStorage.getItem(
+
+        "binah-current-module"
+
+    );
+
+    if(module){
+
+        NavigationState.currentModule = module;
+
+    }
+
+}
+
+/* ==========================================================
    MODULE ROUTES
 ========================================================== */
 
@@ -344,3 +392,146 @@ function getModuleRoute(module){
 
 }
 
+/* ==========================================================
+   RESTORE MODULE
+========================================================== */
+
+function restoreModule(){
+
+    const module = getCurrentModule();
+
+    const button = document.querySelector(
+
+        `[data-module="${module}"]`
+
+    );
+
+    if(!button){
+
+        return;
+
+    }
+
+    document.querySelectorAll(
+
+        ".menu-item"
+
+    ).forEach(item=>{
+
+        item.classList.remove(
+
+            "active"
+
+        );
+
+    });
+
+    button.classList.add(
+
+        "active"
+
+    );
+
+    updateContent(module);
+
+}
+
+/* ==========================================================
+   MODULE INITIALIZER
+========================================================== */
+
+function initializeModule(){
+
+    restoreModule();
+
+    initializeSidebar();
+
+}
+
+/* ==========================================================
+   APPLICATION READY
+========================================================== */
+
+function applicationReady(){
+
+    console.log(
+
+        "Binah Command Center Ready"
+
+    );
+
+}
+
+/* ==========================================================
+   MODULE NAVIGATION
+========================================================== */
+
+function openModule(module){
+
+    switch(module){
+
+        case "dashboard":
+
+            console.log(
+
+                "Dashboard Module"
+
+            );
+
+            break;
+
+        case "security":
+
+            window.location.href =
+
+            "../security/index.html";
+
+            break;
+
+        case "intelligence":
+
+            window.location.href =
+
+            "../intelligence/index.html";
+
+            break;
+
+        case "users":
+
+            window.location.href =
+
+            "../users/index.html";
+
+            break;
+
+        case "logs":
+
+            console.log(
+
+                "Logs Module"
+
+            );
+
+            break;
+
+        case "settings":
+
+            console.log(
+
+                "Settings Module"
+
+            );
+
+            break;
+
+        default:
+
+            console.warn(
+
+                "Unknown Module"
+
+            );
+
+    }
+
+}

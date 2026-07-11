@@ -1,0 +1,145 @@
+/* ==========================================================
+   BINAH COMMAND CENTER
+   INTELLIGENCE MODULE
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    background:var(--color-background);
+
+    color:var(--color-text);
+
+    font-family:var(--font-family);
+
+}
+
+/* ==========================================================
+   MODULE
+========================================================== */
+
+#intelligence-module{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:40px;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+#module-header{
+
+    margin-bottom:40px;
+
+}
+
+#module-header h1{
+
+    font-size:34px;
+
+    color:var(--color-primary);
+
+    margin-bottom:10px;
+
+}
+
+#module-header p{
+
+    color:var(--color-text-secondary);
+
+}
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+#intelligence-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:24px;
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.intelligence-card{
+
+    background:var(--color-surface);
+
+    border:1px solid var(--color-border);
+
+    border-radius:var(--border-radius-medium);
+
+    padding:28px;
+
+    min-height:180px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    transition:
+
+        transform .25s ease,
+
+        border-color .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+.intelligence-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--color-primary);
+
+    box-shadow:0 0 18px rgba(201,164,76,.18);
+
+}
+
+.intelligence-card h3{
+
+    font-size:18px;
+
+    color:var(--color-primary);
+
+}
+
+.intelligence-value{
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:var(--color-primary);
+
+}
