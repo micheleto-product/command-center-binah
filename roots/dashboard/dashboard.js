@@ -34,26 +34,62 @@ const DashboardState = {
 };
 
 /* ==========================================================
+   DASHBOARD PANELS
+========================================================== */
+
+const DashboardPanels = {
+
+    activity:
+
+        "Waiting for activity...",
+
+    status:
+
+        "Operational",
+
+    events:
+
+        "No recent events.",
+
+    ai:
+
+        "AI Engine Ready.",
+
+    actions:
+
+        "Restart • Backup • Scan",
+
+    logs:
+
+        "System log is empty."
+
+};
+
+/* ==========================================================
    INIT
 ========================================================== */
 
 function initializeDashboard(){
 
-    loadCurrentModule();
-
     loadUser();
 
     startClock();
 
+    initializeSidebar();
+
     initializeCards();
 
-    initializeModule();
-
-    applicationReady();
+    initializePanels();
 
     console.table(
 
         DashboardState
+
+    );
+
+    console.table(
+
+        DashboardPanels
 
     );
 
@@ -100,6 +136,14 @@ function initializeCards(){
 
     );
 
+    updateCard(
+
+        "card-users",
+
+        "12 ACTIVE"
+
+    );
+
 }
 
 function updateCard(id,value){
@@ -119,6 +163,94 @@ function updateCard(id,value){
         field.innerText = value;
 
     }
+
+}
+
+/* ==========================================================
+   UPDATE PANEL
+========================================================== */
+
+function updatePanel(id,value){
+
+    const panel = document.getElementById(
+
+        id
+
+    );
+
+    if(!panel){
+
+        return;
+
+    }
+
+    const content = panel.querySelector(
+
+        ".panel-content"
+
+    );
+
+    if(content){
+
+        content.innerText = value;
+
+    }
+
+}
+
+/* ==========================================================
+   DASHBOARD PANELS
+========================================================== */
+
+function initializePanels(){
+
+    updatePanel(
+
+        "activity-panel",
+
+        DashboardPanels.activity
+
+    );
+
+    updatePanel(
+
+        "status-panel",
+
+        DashboardPanels.status
+
+    );
+
+    updatePanel(
+
+        "events-panel",
+
+        DashboardPanels.events
+
+    );
+
+    updatePanel(
+
+        "ai-panel",
+
+        DashboardPanels.ai
+
+    );
+
+    updatePanel(
+
+        "actions-panel",
+
+        DashboardPanels.actions
+
+    );
+
+    updatePanel(
+
+        "logs-panel",
+
+        DashboardPanels.logs
+
+    );
 
 }
 
@@ -506,21 +638,17 @@ function openModule(module){
 
         case "logs":
 
-            console.log(
+            window.location.href =
 
-                "Logs Module"
-
-            );
+            "../logs/index.html";
 
             break;
 
         case "settings":
 
-            console.log(
+            window.location.href =
 
-                "Settings Module"
-
-            );
+            "../settings/index.html";
 
             break;
 

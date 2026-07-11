@@ -1,0 +1,209 @@
+/* ==========================================================
+   BINAH COMMAND CENTER
+   LOGS MODULE
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    background:var(--color-background);
+
+    color:var(--color-text);
+
+    font-family:var(--font-family);
+
+}
+
+/* ==========================================================
+   MODULE
+========================================================== */
+
+#logs-module{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:40px;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+#module-header{
+
+    margin-bottom:35px;
+
+}
+
+#module-header h1{
+
+    font-size:34px;
+
+    color:var(--color-primary);
+
+    margin-bottom:10px;
+
+}
+
+#module-header p{
+
+    color:var(--color-text-secondary);
+
+}
+
+/* ==========================================================
+   LOG PANEL
+========================================================== */
+
+#logs-panel{
+
+    background:var(--color-surface);
+
+    border:1px solid var(--color-border);
+
+    border-radius:var(--border-radius-medium);
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   LOG ROW
+========================================================== */
+
+.log-row{
+
+    display:grid;
+
+    grid-template-columns:
+
+        120px
+        90px
+        1fr;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:18px 24px;
+
+    border-bottom:1px solid var(--color-border);
+
+    transition:
+
+        background .25s ease;
+
+}
+
+.log-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.log-row:hover{
+
+    background:rgba(255,255,255,.03);
+
+}
+
+/* ==========================================================
+   LOG TIME
+========================================================== */
+
+.log-time{
+
+    color:var(--color-text-secondary);
+
+    font-family:monospace;
+
+    font-size:14px;
+
+}
+
+/* ==========================================================
+   LOG LEVEL
+========================================================== */
+
+.log-level{
+
+    width:70px;
+
+    text-align:center;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+/* ==========================================================
+   LEVEL COLORS
+========================================================== */
+
+.info{
+
+    background:#2962ff33;
+
+    color:#82b1ff;
+
+}
+
+.success{
+
+    background:#00c85333;
+
+    color:#69f0ae;
+
+}
+
+.warning{
+
+    background:#ffab0033;
+
+    color:#ffd54f;
+
+}
+
+.error{
+
+    background:#d5000033;
+
+    color:#ff8a80;
+
+}
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.log-message{
+
+    color:var(--color-text);
+
+    font-size:15px;
+
+}
