@@ -29,6 +29,8 @@ const DashboardState = {
 
     ai: "IDLE",
 
+    users: "12 ACTIVE",
+
     logs: "0 ALERTS"
 
 };
@@ -66,11 +68,109 @@ const DashboardPanels = {
 };
 
 /* ==========================================================
+   DASHBOARD DATA
+========================================================== */
+
+const DashboardData = {
+
+    activity: [],
+
+    events: [],
+
+    logs: []
+
+};
+
+/* ==========================================================
+   DASHBOARD CONTROLLER
+========================================================== */
+
+const DashboardController = {
+
+    refresh(){
+
+        initializeCards();
+
+        initializePanels();
+
+    }
+
+};
+
+/* ==========================================================
+   ADD ACTIVITY
+========================================================== */
+
+function addActivity(message){
+
+    DashboardData.activity.unshift(message);
+
+    if(DashboardData.activity.length > 5){
+
+        DashboardData.activity.pop();
+
+    }
+
+    DashboardPanels.activity =
+
+        DashboardData.activity.join("\n");
+
+    DashboardController.refresh();
+
+}
+
+/* ==========================================================
+   ADD EVENT
+========================================================== */
+
+function addEvent(message){
+
+    DashboardData.events.unshift(message);
+
+    if(DashboardData.events.length > 5){
+
+        DashboardData.events.pop();
+
+    }
+
+    DashboardPanels.events =
+
+        DashboardData.events.join("\n");
+
+    DashboardController.refresh();
+
+}
+
+/* ==========================================================
+   ADD LOG
+========================================================== */
+
+function addDashboardLog(message){
+
+    DashboardData.logs.unshift(message);
+
+    if(DashboardData.logs.length > 5){
+
+        DashboardData.logs.pop();
+
+    }
+
+    DashboardPanels.logs =
+
+        DashboardData.logs.join("\n");
+
+    DashboardController.refresh();
+
+}
+
+/* ==========================================================
    INIT
 ========================================================== */
 
 function initializeDashboard(){
 
+    initializeNavigation();
+    
     loadUser();
 
     startClock();
@@ -96,7 +196,6 @@ function initializeDashboard(){
     // Future Modules
 
 }
-
 
 /* ==========================================================
    DASHBOARD CARDS
@@ -140,7 +239,7 @@ function initializeCards(){
 
         "card-users",
 
-        "12 ACTIVE"
+        DashboardState.users
 
     );
 
@@ -376,29 +475,11 @@ function changeModule(event){
 
     );
 
-    updateContent(module);
-
     openModule(module);
 
 }
 
-function updateContent(module){
 
-    document.getElementById(
-
-        "module-title"
-
-    ).innerText = capitalize(module);
-
-    document.getElementById(
-
-        "module-description"
-
-    ).innerText =
-
-        "Module ready for initialization.";
-
-}
 
 function capitalize(text){
 
@@ -408,121 +489,6 @@ function capitalize(text){
 
 }
 
-/* ==========================================================
-   GET MODULE ROUTE
-========================================================== */
-
-function getModuleRoute(module){
-
-    return ModuleRoutes[module] || null;
-
-}
-
-/* ==========================================================
-   GET CURRENT MODULE
-========================================================== */
-
-function getCurrentModule(){
-
-    return NavigationState.currentModule;
-
-}
-
-/* ==========================================================
-   MODULE NAVIGATION
-========================================================== */
-
-function navigateToModule(route){
-
-    if(!route){
-
-        return;
-
-    }
-
-    setTimeout(()=>{
-
-        window.location.href = route;
-
-    },250);
-
-}
-
-/* ==========================================================
-   SAVE CURRENT MODULE
-========================================================== */
-
-function saveCurrentModule(){
-
-    sessionStorage.setItem(
-
-        "binah-current-module",
-
-        NavigationState.currentModule
-
-    );
-
-}
-
-/* ==========================================================
-   LOAD CURRENT MODULE
-========================================================== */
-
-function loadCurrentModule(){
-
-    const module = sessionStorage.getItem(
-
-        "binah-current-module"
-
-    );
-
-    if(module){
-
-        NavigationState.currentModule = module;
-
-    }
-
-}
-
-/* ==========================================================
-   MODULE ROUTES
-========================================================== */
-
-const ModuleRoutes = {
-
-    dashboard: "../dashboard/index.html",
-
-    security: "../security/index.html",
-
-    intelligence: "../intelligence/index.html",
-
-    users: "../users/index.html",
-
-    logs: "../logs/index.html",
-
-    settings: "../settings/index.html"
-
-};
-
-/* ==========================================================
-   NAVIGATION STATE
-========================================================== */
-
-const NavigationState = {
-
-    currentModule: "dashboard"
-
-};
-
-/* ==========================================================
-   GET MODULE ROUTE
-========================================================== */
-
-function getModuleRoute(module){
-
-    return ModuleRoutes[module] || null;
-
-}
 
 /* ==========================================================
    RESTORE MODULE
@@ -600,66 +566,46 @@ function applicationReady(){
 
 function openModule(module){
 
-    switch(module){
+    Navigation.go(module);
 
-        case "dashboard":
+}
 
-            console.log(
+/* ==========================================================
+   UPDATE DASHBOARD STATE
+========================================================== */
 
-                "Dashboard Module"
+function updateDashboardState(key,value){
 
-            );
+    if(
 
-            break;
+        DashboardState.hasOwnProperty(key)
 
-        case "security":
+    ){
 
-            window.location.href =
-
-            "../security/index.html";
-
-            break;
-
-        case "intelligence":
-
-            window.location.href =
-
-            "../intelligence/index.html";
-
-            break;
-
-        case "users":
-
-            window.location.href =
-
-            "../users/index.html";
-
-            break;
-
-        case "logs":
-
-            window.location.href =
-
-            "../logs/index.html";
-
-            break;
-
-        case "settings":
-
-            window.location.href =
-
-            "../settings/index.html";
-
-            break;
-
-        default:
-
-            console.warn(
-
-                "Unknown Module"
-
-            );
+        DashboardState[key]=value;
 
     }
+
+    DashboardController.refresh();
+
+}
+
+/* ==========================================================
+   UPDATE PANEL STATE
+========================================================== */
+
+function updatePanelState(key,value){
+
+    if(
+
+        DashboardPanels.hasOwnProperty(key)
+
+    ){
+
+        DashboardPanels[key]=value;
+
+    }
+
+    DashboardController.refresh();
 
 }

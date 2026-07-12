@@ -47,6 +47,8 @@ const IntelligenceConfig = {
 
 function initializeIntelligence(){
 
+    initializeNavigation();
+    
     initializeCards();
 
     applicationReady();

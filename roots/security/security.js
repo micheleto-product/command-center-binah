@@ -45,6 +45,8 @@ const SecurityEvents = {
 
 function initializeSecurity(){
 
+    initializeNavigation();
+    
     initializeCards();
 
     console.table(

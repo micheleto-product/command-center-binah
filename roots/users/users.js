@@ -47,6 +47,8 @@ const UsersConfig = {
 
 function initializeUsers(){
 
+    initializeNavigation();
+    
     initializeCards();
 
     applicationReady();

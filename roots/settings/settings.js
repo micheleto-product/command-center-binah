@@ -47,6 +47,8 @@ const SettingsConfig = {
 
 function initializeSettings(){
 
+    initializeNavigation();
+    
     renderSettings();
 
     applicationReady();

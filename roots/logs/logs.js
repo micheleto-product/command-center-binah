@@ -69,6 +69,8 @@ const LogsConfig = {
 
 function initializeLogs(){
 
+    initializeNavigation();
+    
     renderLogs();
 
     applicationReady();
