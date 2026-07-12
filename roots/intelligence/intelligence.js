@@ -53,6 +53,8 @@ function initializeIntelligence(){
 
     applicationReady();
 
+    initializeEventBus();
+
 }
 
 /* ==========================================================
@@ -230,5 +232,35 @@ function updateIntelligence(data){
     );
 
     refreshIntelligence();
+
+}
+
+/************************************************************
+ EVENT BUS
+************************************************************/
+
+function initializeEventBus(){
+
+    // Reserved for future events
+
+}
+
+function publishModuleEvent(message){
+
+    EventBus.publish(
+
+        "MODULE_EVENT",
+
+        {
+
+            module: "intelligence",
+
+            message,
+
+            timestamp: new Date()
+
+        }
+
+    );
 
 }

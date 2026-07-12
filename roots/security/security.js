@@ -55,6 +55,8 @@ function initializeSecurity(){
 
     );
 
+    initializeEventBus();
+
 }
 
 /* ==========================================================
@@ -178,6 +180,36 @@ function applicationReady(){
     console.log(
 
         "Security Module Ready"
+
+    );
+
+}
+
+/************************************************************
+ EVENT BUS
+************************************************************/
+
+function initializeEventBus(){
+
+    // Reserved for future events
+
+}
+
+function publishModuleEvent(message){
+
+    EventBus.publish(
+
+        "MODULE_EVENT",
+
+        {
+
+            module: "security",
+
+            message,
+
+            timestamp: new Date()
+
+        }
 
     );
 

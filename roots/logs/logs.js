@@ -69,11 +69,23 @@ const LogsConfig = {
 
 function initializeLogs(){
 
-    initializeNavigation();
-    
     renderLogs();
 
     applicationReady();
+
+    initializeEventBus();
+
+    registerLogsState();
+
+    console.table(
+
+    StateManager.get(
+
+        "logs"
+
+    )
+
+);
 
 }
 
@@ -213,6 +225,14 @@ function addLog(level,message){
 
     });
 
+    StateManager.set(
+
+        "logs",
+
+        LogsState
+
+    );
+
     if(
 
         LogsState.length >
@@ -224,6 +244,14 @@ function addLog(level,message){
         LogsState.pop();
 
     }
+
+    StateManager.set(
+
+        "logs",
+
+        LogsState
+
+    );
 
     renderLogs();
 
@@ -274,6 +302,84 @@ function generateSampleLogs(){
         "OK",
 
         "Event system connected."
+
+    );
+
+}
+
+/* ==========================================================
+   EVENT BUS
+========================================================== */
+
+function initializeEventBus(){
+
+    EventBus.subscribe(
+
+        "DASHBOARD_EVENT",
+
+        receiveDashboardEvent
+
+    );
+
+}
+
+/* ==========================================================
+   RECEIVE DASHBOARD EVENT
+========================================================== */
+
+function receiveDashboardEvent(payload){
+
+    addLog(
+
+        "INFO",
+
+        payload.message
+
+    );
+
+}
+
+/************************************************************
+ EVENT BUS
+************************************************************/
+
+function initializeEventBus(){
+
+    // Reserved for future events
+
+}
+
+function publishModuleEvent(message){
+
+    EventBus.publish(
+
+        "MODULE_EVENT",
+
+        {
+
+            module: "logs",
+
+            message,
+
+            timestamp: new Date()
+
+        }
+
+    );
+
+}
+
+/* ==========================================================
+   REGISTER GLOBAL STATE
+========================================================== */
+
+function registerLogsState(){
+
+    StateManager.set(
+
+        "logs",
+
+        LogsState
 
     );
 

@@ -93,6 +93,8 @@ const DashboardController = {
 
         initializePanels();
 
+        initializeEventBus();
+
     }
 
 };
@@ -181,6 +183,10 @@ function initializeDashboard(){
 
     initializePanels();
 
+    initializeEventBus();
+
+    registerDashboardState();
+
     console.table(
 
         DashboardState
@@ -192,6 +198,22 @@ function initializeDashboard(){
         DashboardPanels
 
     );
+
+    publishDashboardEvent(
+
+        "Dashboard initialized."
+
+    );
+
+    console.table(
+
+        StateManager.get(
+
+            "dashboard"
+
+        )
+
+);
 
     // Future Modules
 
@@ -480,86 +502,6 @@ function changeModule(event){
 }
 
 
-
-function capitalize(text){
-
-    return text.charAt(0).toUpperCase()
-
-        + text.slice(1);
-
-}
-
-
-/* ==========================================================
-   RESTORE MODULE
-========================================================== */
-
-function restoreModule(){
-
-    const module = getCurrentModule();
-
-    const button = document.querySelector(
-
-        `[data-module="${module}"]`
-
-    );
-
-    if(!button){
-
-        return;
-
-    }
-
-    document.querySelectorAll(
-
-        ".menu-item"
-
-    ).forEach(item=>{
-
-        item.classList.remove(
-
-            "active"
-
-        );
-
-    });
-
-    button.classList.add(
-
-        "active"
-
-    );
-
-    updateContent(module);
-
-}
-
-/* ==========================================================
-   MODULE INITIALIZER
-========================================================== */
-
-function initializeModule(){
-
-    restoreModule();
-
-    initializeSidebar();
-
-}
-
-/* ==========================================================
-   APPLICATION READY
-========================================================== */
-
-function applicationReady(){
-
-    console.log(
-
-        "Binah Command Center Ready"
-
-    );
-
-}
-
 /* ==========================================================
    MODULE NAVIGATION
 ========================================================== */
@@ -582,7 +524,9 @@ function updateDashboardState(key,value){
 
     ){
 
-        DashboardState[key]=value;
+        DashboardState[key] = value;
+
+        syncDashboardState();
 
     }
 
@@ -602,10 +546,124 @@ function updatePanelState(key,value){
 
     ){
 
-        DashboardPanels[key]=value;
+        DashboardPanels[key] = value;
+
+        StateManager.set(
+
+            "dashboard-panels",
+
+            DashboardPanels
+
+        );
 
     }
 
     DashboardController.refresh();
+
+}
+
+
+
+/* ==========================================================
+   REFRESH DASHBOARD
+========================================================== */
+
+function refreshDashboard(){
+
+    initializeCards();
+
+    initializePanels();
+
+    publishDashboardEvent(
+
+        "Dashboard refreshed."
+
+    );
+
+}
+
+/* ==========================================================
+   EVENT PUBLISHERS
+========================================================== */
+
+function publishDashboardEvent(message){
+
+    EventBus.publish(
+
+        "DASHBOARD_EVENT",
+
+        {
+
+            message,
+
+            timestamp: new Date()
+
+        }
+
+    );
+
+}
+
+/************************************************************
+ EVENT BUS
+************************************************************/
+
+function initializeEventBus(){
+
+    // Reserved for future events
+
+}
+
+function publishModuleEvent(message){
+
+    EventBus.publish(
+
+        "MODULE_EVENT",
+
+        {
+
+            module: "dashboard",
+
+            message,
+
+            timestamp: new Date()
+
+        }
+
+    );
+
+}
+
+/* ==========================================================
+   REGISTER GLOBAL STATE
+========================================================== */
+
+function registerDashboardState(){
+
+    syncDashboardState();
+
+}
+
+/* ==========================================================
+   SYNC DASHBOARD STATE
+========================================================== */
+
+function syncDashboardState(){
+
+    StateManager.set(
+
+        "dashboard",
+
+        DashboardState
+
+    );
+
+    StateManager.set(
+
+        "dashboard-panels",
+
+        DashboardPanels
+
+    );
 
 }

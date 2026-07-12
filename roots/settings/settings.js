@@ -53,6 +53,8 @@ function initializeSettings(){
 
     applicationReady();
 
+    initializeEventBus();
+
 }
 
 /* ==========================================================
@@ -207,3 +209,34 @@ function applicationReady(){
 // saveSettings();
 
 // resetSettings();
+
+
+/************************************************************
+ EVENT BUS
+************************************************************/
+
+function initializeEventBus(){
+
+    // Reserved for future events
+
+}
+
+function publishModuleEvent(message){
+
+    EventBus.publish(
+
+        "MODULE_EVENT",
+
+        {
+
+            module: "settings",
+
+            message,
+
+            timestamp: new Date()
+
+        }
+
+    );
+
+}
